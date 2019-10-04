@@ -1,0 +1,7 @@
+2019/10/03 06:46:41 [warn] 8#8: server name "localhost/api" has suspicious symbols in /etc/nginx/sites-available/default.conf:12
+2019/10/03 09:24:06 [emerg] 9#9: invalid host in "[::]:80/api" of the "listen" directive in /etc/nginx/sites-available/default.conf:4
+2019/10/03 09:31:01 [emerg] 8#8: invalid host in "[::]:80/api" of the "listen" directive in /etc/nginx/sites-available/default.conf:4
+2019/10/03 09:34:22 [emerg] 8#8: invalid host in "[::]:80/api" of the "listen" directive in /etc/nginx/sites-available/default.conf:4
+2019/10/03 09:36:15 [emerg] 8#8: invalid host in "[::]:80/api" of the "listen" directive in /etc/nginx/sites-available/default.conf:4
+2019/10/03 09:37:20 [warn] 8#8: server name "localhost/api" has suspicious symbols in /etc/nginx/sites-available/default.conf:12
+2019/10/03 09:39:47 [warn] 8#8: server name "localhost/api" has suspicious symbols in /etc/nginx/sites-available/default.conf:12
