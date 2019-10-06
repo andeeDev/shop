@@ -14,4 +14,12 @@ class Product extends Model
             'id'
             );
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(
+          Order::class,
+          'product_order'
+        );
+    }
 }
