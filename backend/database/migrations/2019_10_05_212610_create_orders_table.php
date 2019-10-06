@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->date('date');
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
