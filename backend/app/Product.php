@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+    protected $hidden = ['date'];
+
     public function categories()
     {
         return $this->belongsTo(
@@ -20,6 +23,6 @@ class Product extends Model
         return $this->belongsToMany(
           Order::class,
           'product_order'
-        )->withPivot('amountg');
+        )->withPivot('amount');
     }
 }
