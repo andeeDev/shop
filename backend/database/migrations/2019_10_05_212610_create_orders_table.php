@@ -11,12 +11,16 @@ class CreateOrdersTable extends Migration
      *
      * @return void
      */
+    protected $fillable = ['created_at'];
+
+
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->date('date');
+            $table->date('created_at');
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
