@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('desc');
             $table->float('price');
             $table->bigInteger('ctg_id');
-            $table->foreign('ctg_id')->references('id')->on('categories')->onDelete('set null');
+            $table->foreign('ctg_id')->references('id')->on('categories')->onDelete('CASCADE');
         });
     }
 
