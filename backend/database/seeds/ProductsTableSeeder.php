@@ -11,13 +11,6 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        /*\App\Product::create([
-            'id' => 1,
-            'name' => 'afksd',
-            'desc' => 'dfsjlk',
-            'price' => 56,
-            'ctg_id' => 1
-        ]);*/
         $categories = \App\Category::all();
         $faker = Faker\Factory::create();
         foreach ($categories as $category ) {
