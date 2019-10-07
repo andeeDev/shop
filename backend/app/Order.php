@@ -8,8 +8,13 @@ class Order extends Model
 {
     public $timestamps = false;
 
-    public function setCreatedAtAttribute($value) {
-        $this->attributes['created_at'] = \Carbon\Carbon::now();
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->created_at = $model->freshTimestamp();
+        });
     }
 
 
