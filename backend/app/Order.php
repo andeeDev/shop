@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $hidden = ['date'];
+
+
     public function products()
     {
         return $this->belongsToMany(
