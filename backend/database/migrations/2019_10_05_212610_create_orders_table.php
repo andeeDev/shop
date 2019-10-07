@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->date('created_at');
+            $table->timestamp('created_at');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
