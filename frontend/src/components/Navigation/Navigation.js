@@ -6,8 +6,8 @@ class Navigation extends Component {
         return(
             <nav className={"App-nav"}>
                 <ul className={"App-nav-list"}>
-                    <li className={"App-list-item App-list-button"}>Register</li>
-                    <li className={"App-list-item App-list-cart"}>Cart</li>
+                    <li key={8} className={"App-list-item App-list-button"}>Register</li>
+                    <li key={9} className={"App-list-item App-list-cart"}>Cart</li>
                 </ul>
             </nav>
         )

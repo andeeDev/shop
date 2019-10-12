@@ -13,7 +13,8 @@ const ctgLoader = async () => {
             console.log(data);
         }
     ) */
-   console.log(ctgList[0]);
+    // console.log(ctgList)
+    return ctgList;
 
 }
 export default ctgLoader;

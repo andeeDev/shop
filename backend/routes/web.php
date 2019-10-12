@@ -24,4 +24,25 @@ Route::get('/u', function () {
 
     return $faker->word();
 });
-Route::get('/user','ProductController@index');
+Route::get('/category/product/{id}','ProductController@index')->where('id', '[0-9]+');
+
+Route::get('/popular','ProductController@popularItems');
+
+Route::get('/categories','CategoryController@index');
+
+Route::get('/res/{filename}', function($filename){
+    $path = resource_path() .'/img/'. $filename;
+
+    if(!File::exists($path)) {
+        return response()->json(['message' => 'Image not found.'], 404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+

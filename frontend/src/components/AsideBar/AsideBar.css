@@ -1,0 +1,12 @@
+.App-aside {
+    width: 300px;
+}
+.App-aside-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.App-aside-nav button {
+    margin-top: 10px;
+
+}

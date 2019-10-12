@@ -1,6 +1,13 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: 100px 5fr;
+  grid-template-areas:
+          "Header Header"
+          "AsideBar  ContentPart";
 }
+
+/*
 
 .App-logo {
   height: 40vmin;
@@ -20,3 +27,4 @@
 .App-link {
   color: #09d3ac;
 }
+*/
