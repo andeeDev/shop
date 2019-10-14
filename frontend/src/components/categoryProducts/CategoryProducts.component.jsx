@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import {
     Link, Route,
     useParams,
-    useRouteMatch
+    useRouteMatch,
+    withRouter
 } from 'react-router-dom'
 // import PropTypes from 'prop-types';
-import './ContentPart.css';
-import getProductsByCategory from "../../services/Products";
+import './CategoryProducts.styles.scss';
+import { getProductsByCategory } from "../../services/Products";
 import ProductCard from "../ProductCard/ProductCard";
 
-class ContentPart extends Component {
+class CategoryProducts extends Component {
 
     /*static propTypes = {
       customAttribute: PropTypes.string
@@ -34,11 +35,11 @@ class ContentPart extends Component {
       customAttribute: '1'
   };*/
     async componentWillReceiveProps(nextProps) {
-        const { url } = this.props.match;
+        const { url } = nextProps.match;
+        console.log("my url = ", url);
         const productsList = await getProductsByCategory(url);
-        console.log("productsList = ", productsList.data.data[0]);
-        //console.log("categList = ", categList.data.data);
-        this.setState({ data: productsList.data.data} );
+        console.log("my productsList = ", productsList );
+        this.setState(() => ({ data: productsList.data.data} ));
     }
 
 
@@ -48,27 +49,24 @@ class ContentPart extends Component {
         console.log("productsList = ", productsList.data.data[0]);
         //console.log("categList = ", categList.data.data);
         this.setState({ data: productsList.data.data} );
+
     }
     render() {
-        const { url } = this.props.match;
-        console.log("url = ",this.state.data[0]);
-
+        /*const { url } = this.props.match;
+        console.log("url = ",url);*/
+        const { name } = this.props.location.state;
+        console.log(name)
 
         return (
             <main className="ContentPart">
-                <h1 className="section-title">10 most wanted items</h1>
+                <h1 className="section-title">{name}</h1>
                 <div className="ContentPart__Container">
-                    {}
                     {
                         this.state.data.map( (product) => {
-                                console.log(product.name);
+                                console.log(product);
                                 return (
-
-
-                                        <ProductCard key={product.id} title={product.name} />
-
+                                        <ProductCard key={product.id} title={product.name} id={product.id} price={product.price} />
                                     );
-
                         })
                     }
                 </div>
@@ -77,4 +75,4 @@ class ContentPart extends Component {
     }
 }
 
-export default ContentPart;
+export default withRouter(CategoryProducts);

@@ -1,60 +1,39 @@
-import React, {Component} from 'react';
-import Header from './components/Header/Header';
-import AsideBar from './components/AsideBar/AsideBar';
-import ContentPart from './components/ContentPart/ContentPart';
+import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
     Switch
 } from "react-router-dom";
-/* ,
-    Switch,
-    Route,
-    Link */
-
-// import logo from './logo.svg';
+// Pages
+import HomePage from "./pages/homepage/homepage.component";
+//Components
+import Header from './components/header/header.component';
+import AsideBar from "./components/asideBar/asideBar.component";
+import ProductPage from "./pages/productpage/productpage.component";
+import CategoryProductPage from "./pages/categoryproductspage/categoryproductspage.component";
+// Styles
 import './App.css';
-import getAllCategories from "./services/Categories";
-import PopularItems from "./components/PopularItems/PopularItems";
+
+
 
 
 
 function App() {
-
-    /*async componentDidMount()  {
-        const categList = await getAllCategories();
-        console.log("categList = ", categList.data.data);
-        this.setState({ data: categList.data.data} );
-    }*/
-
     return (
         <div className="App">
             <Router>
-                    <Header />
-                    <AsideBar />  {/*ctgList={{ data: this.state.data }}*/}
+                <Header />
+                <AsideBar />
                 <Switch>
-
-                    <Route exact path="/category/product/:id" component={ContentPart} />
-                    <Route exact path="/" component={PopularItems}/>
+                    <Route exact path="/categories/:id/products/" component={CategoryProductPage} />
+                    <Route exact path="/products/:product_id" component={ProductPage} />
+                    {/* <Route exact path="/cart" component={HomePage}/>*/}
+                    <Route exect path="/" component={HomePage}/>
                 </Switch>
-
-                {/*<ContentPart />*/}
             </Router>
         </div>
     );
 }
 
-/* <img src={logo} className="App-logo" alt="logo" />
-<p>
-Edit <code>src/App.js</code> and save to reload.
-</p>
-<a
-className="App-link"
-href="https://reactjs.org"
-target="_blank"
-rel="noopener noreferrer"
->
-Learn React
-</a> */
 
 export default App;

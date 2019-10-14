@@ -4,12 +4,13 @@ import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 
 class ProductCard extends Component {
-    state = {
-        data: []
-    };
+
 
     constructor(props){
         super(props);
+        this.state = {
+            buyIsClicked: false
+        };
     }
     /* componentDidMount() {
          const categList = getAllCategories().then((categList) => {
@@ -32,18 +33,27 @@ class ProductCard extends Component {
         //  history.push(`categories/${id}`);
     };
 
+    handleClick = (event) => {
+        event.preventDefault()
+
+    };
+
 
     render() {
+        const {id, title, price } = this.props;
+
         return (
+
             <section className="ProductCard">
-                <img src="https://img.moyo.ua/img/products/1954/34_600.jpg" width="200px" height="200px" alt="productcard__img" />
-                <h2 className="ProductCard__title">{this.props.title}</h2>
-                <Link to="/product/1">
-                <Button  variant="contained" color="primary" >
-                    Buy
-                </Button>
+                <Link to={`/products/${id}`}  >
+                    <img src={`https://picsum.photos/id/${id}/200/300`} width="200px" height="300px" alt="productcard__img" />
+                    <h2 className="ProductCard__title">{title}</h2>
                 </Link>
+                <Button  variant="contained" color="primary" > Buy </Button>
+                <span>{`${price} $`}</span>
+
             </section>
+
         )
 
     }

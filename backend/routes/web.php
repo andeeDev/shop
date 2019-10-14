@@ -11,26 +11,18 @@
 |
 */
 
-use \App\Product as Product;
 
+Route::get('/categories/{category_id}/products','ProductController@index')->where('id', '[0-9]+');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/u', function () {
-    $categories = \App\Category::all();
-    $faker = Faker\Factory::create();
-
-    return $faker->word();
-});
-Route::get('/category/product/{id}','ProductController@index')->where('id', '[0-9]+');
-
-Route::get('/popular','ProductController@popularItems');
+Route::get('products/popular','ProductController@popularItems');
 
 Route::get('/categories','CategoryController@index');
 
-Route::get('/res/{filename}', function($filename){
+Route::get('/products/{product_id}', 'ProductController@specialProduct');
+/*
+ *
+ */
+Route::get('/resources/{filename}', function($filename){
     $path = resource_path() .'/img/'. $filename;
 
     if(!File::exists($path)) {
