@@ -14,6 +14,7 @@
 
 Route::get('/categories/{category_id}/products','ProductController@index')->where('id', '[0-9]+');
 
+
 Route::get('products/popular','ProductController@popularItems');
 
 Route::get('/categories','CategoryController@index');
