@@ -14,14 +14,4 @@
 use \App\Product as Product;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/u', function () {
-    $categories = \App\Category::all();
-    $faker = Faker\Factory::create();
-
-    return $faker->word();
-});
-Route::get('/user','ProductController@index');
