@@ -1,14 +1,10 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import {
-    NavLink
-} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-import getAllCategories from '../../services/Categories'
+import getAllCategories from '../../services/Categories';
 
 import './asideBar.styles.scss';
-
-
 
 class AsideBar extends Component {
     state = {
@@ -17,32 +13,34 @@ class AsideBar extends Component {
 
     async componentDidMount() {
         const categList = await getAllCategories();
-        this.setState({ data: categList.data.data} );
+        this.setState({ data: categList.data.data });
     }
 
     render() {
         return (
             <aside className="App-aside">
                 <nav className="App-aside-nav">
-                    { this.state.data.map( (category) => {
+                    {this.state.data.map(category => {
                         return (
-                            <NavLink activeClassName={'active-side-bar-link'}
+                            <NavLink
+                                activeClassName={'active-side-bar-link'}
                                 key={`category_link_${category.id}`}
                                 to={{
-                                    pathname:`/categories/${category.id}/products/`,
+                                    pathname: `/categories/${category.id}/products/`,
                                     state: {
-                                        name:category.name
+                                        name: category.name
                                     }
-                                }}>
-                                <Button  variant="contained" color="primary" >
+                                }}
+                            >
+                                <Button variant="contained" color="primary">
                                     {category.name}
                                 </Button>
                             </NavLink>
-                        )
+                        );
                     })}
                 </nav>
             </aside>
-        )
+        );
     }
 }
 
