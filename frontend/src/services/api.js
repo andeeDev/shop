@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function send(api, method = 'get',  data = null ) {
+async function send(api, method = 'get') {
     let response;
     try {
         const apiUrl = process.env.REACT_APP_API_URL + api;
@@ -9,7 +9,7 @@ async function send(api, method = 'get',  data = null ) {
             url: apiUrl
         });
     } catch (error) {
-        console.error(error);
+        return error;
     }
     return response;
 }

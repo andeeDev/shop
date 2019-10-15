@@ -17,9 +17,8 @@ module.exports = {
     },
     "plugins": [
         "react"
-    ]
-    /*,
+    ],
     "rules": {
         "indent": ["error", 4]
-    }*/
+    }
 };

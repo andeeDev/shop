@@ -27,7 +27,8 @@ function App() {
                 <Switch>
                     <Route exact path="/categories/:id/products/" component={CategoryProductPage} />
                     <Route exact path="/products/:product_id" component={ProductPage} />
-                    {/* <Route exact path="/cart" component={HomePage}/>*/}
+                    { /* Route will be implemented in next versions */
+                    /* <Route exact path="/cart" component={HomePage}/>*/ }
                     <Route exect path="/" component={HomePage}/>
                 </Switch>
             </Router>

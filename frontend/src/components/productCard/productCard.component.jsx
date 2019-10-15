@@ -1,43 +1,15 @@
 import React, {Component} from "react";
-import './ProductCard.css';
+import './productCard.styles.scss';
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 
 class ProductCard extends Component {
-
-
     constructor(props){
         super(props);
         this.state = {
             buyIsClicked: false
         };
     }
-    /* componentDidMount() {
-         const categList = getAllCategories().then((categList) => {
-             console.log("categList = ", categList.data.data);
-
-             this.setState({ data: categList.data.data} );
-         })
-     }*/
-    /*async componentDidMount() {
-        const categList = await getAllCategories();
-        console.log("categList = ", categList.data.data);
-        this.setState({ data: categList.data.data} );
-    }*/
-
-
-
-
-    handleCategoryClick = id => () => {
-        // this.setState('id', id);
-        //  history.push(`categories/${id}`);
-    };
-
-    handleClick = (event) => {
-        event.preventDefault()
-
-    };
-
 
     render() {
         const {id, title, price } = this.props;
@@ -51,7 +23,6 @@ class ProductCard extends Component {
                 </Link>
                 <Button  variant="contained" color="primary" > Buy </Button>
                 <span>{`${price} $`}</span>
-
             </section>
 
         )

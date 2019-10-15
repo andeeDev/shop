@@ -1,14 +1,14 @@
 import send from './api';
 
-const getProductsByCategory = (route) => {
+const getProductsByCategory = route => {
     return send(route);
 };
 
-const getProduct = (route) => {
+const getProduct = route => {
     return send(route);
 };
 
-const getPopularProducts = (route) => {
+const getPopularProducts = route => {
     return send(route);
 };
 
