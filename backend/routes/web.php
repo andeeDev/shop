@@ -40,4 +40,3 @@ Route::get('/products/{product_id}', 'ProductController@specialProduct');
 
     return $response;
 });*/
-
