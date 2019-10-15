@@ -1,0 +1,8 @@
+.ContentPart {
+    width: 1200px;
+    grid-area: ContentPart;
+}
+.ContentPart__Container {
+    display: flex;
+    flex-wrap: wrap;
+}

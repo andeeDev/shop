@@ -15,7 +15,8 @@ server {
 
     location / {
          try_files $uri $uri/ /index.php$is_args$args;
-    }
+   	 add_header Access-Control-Allow-Origin *;
+     }
 
     location ~ \.php$ {
         try_files $uri /index.php =404;
@@ -27,6 +28,18 @@ server {
         #fixes timeouts
         fastcgi_read_timeout 600;
         include fastcgi_params;
+
+
+# CORS settings
+    # http://enable-cors.org/server_nginx.html
+    # http://10.10.0.64 - It's my front end application
+    add_header 'Access-Control-Allow-Origin' '*';
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, DELETE, PUT';
+    add_header 'Access-Control-Allow-Headers' 'Version,Accept,Accept-Encoding,Accept-Language,Connection,Coockie,Authorization,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+  }
+}
+
     }
 
     location ~ /\.ht {

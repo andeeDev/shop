@@ -1,0 +1,47 @@
+.App-header {
+    background-color: whitesmoke;
+    border-bottom: 1px solid black ;
+    padding: 0 20px 0 20px ;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    grid-area: Header;
+}
+.App-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.App-list-item {
+    background-color: #09d3ac;
+    display: inline;
+    padding: 10px;
+    margin-left: 40px;
+    border-radius: 20px;
+}
+.App-list-cart {
+    padding-left: 40px;
+}
+.App-nav-list {
+
+    margin: 10px;
+    box-sizing: border-box;
+    list-style: none;
+    font-size: 24px;
+
+}
+
+.App-list-cart {
+    position: relative;
+}
+.App-list-cart:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top:12px;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/cart.svg");
+}
