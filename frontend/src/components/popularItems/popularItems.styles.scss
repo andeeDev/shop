@@ -2,3 +2,13 @@
   display: flex;
   flex-wrap: wrap;
 }
+.react-paginate ul {
+  display: inline-block;
+  list-style: none;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.react-paginate li {
+  display: inline-block;
+}
