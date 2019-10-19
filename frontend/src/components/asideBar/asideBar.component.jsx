@@ -12,7 +12,9 @@ class AsideBar extends Component {
     };
 
     async componentDidMount() {
+        console.log("cat1 = ", getAllCategories());
         const categList = await getAllCategories();
+        console.log("cat = ", categList);
         this.setState({ data: categList.data.data });
     }
 

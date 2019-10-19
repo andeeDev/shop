@@ -3,12 +3,40 @@
   flex-wrap: wrap;
 }
 .react-paginate ul {
-  display: inline-block;
-  list-style: none;
-  padding-left: 15px;
-  padding-right: 15px;
+
 }
 
 .react-paginate li {
-  display: inline-block;
+
+}
+
+.react-paginate {
+  text-align: center;
+
+  .pagination {
+    list-style: none;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .disabled a{
+      cursor: not-allowed;
+      color: gray;
+    }
+    li.active a{
+      color: gray;
+      cursor: not-allowed;
+    }
+    li {
+      display: inline-block;
+    }
+
+    a {
+      color: #337ab7;
+      border: 1px solid #ddd;
+      display: inline-block;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+  }
 }

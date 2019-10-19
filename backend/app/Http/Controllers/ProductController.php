@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(string $category_id) {
-        return ProductsResource::collection(Product::all()->where('ctg_id', $category_id));
+        return ProductsResource::collection(Product::where('ctg_id', $category_id)->paginate(3));
     }
 
     public function specialProduct(string $product_id) {
@@ -20,6 +20,6 @@ class ProductController extends Controller
      * Return  all items now
      * */
     public function popularItems() {
-        return ProductsResource::collection(Product::with('orders')->paginate(10));
+        return ProductsResource::collection(Product::with('orders')->paginate(env('PAGINATION_LIMIT')));
     }
 }
