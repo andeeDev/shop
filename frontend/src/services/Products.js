@@ -9,7 +9,6 @@ const getProduct = route => {
 };
 
 const getPopularProducts = data => {
-
     return send( '/products/popular', 'get', data);
 };
 

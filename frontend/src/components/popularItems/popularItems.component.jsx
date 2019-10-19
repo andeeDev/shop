@@ -4,37 +4,40 @@ import { getPopularProducts } from '../../services/Products';
 import ProductCard from '../productCard/productCard.component';
 import './popularItems.styles.scss';
 
-
 class PopularItems extends Component {
     state = {
         products: [],
-        pageCount:1,
-        currentPage:1
+        pageCount: 1,
+        currentPage: 1
     };
 
     async componentDidMount() {
         const popularProducts = await getPopularProducts();
-        this.setState({ products: popularProducts.data.data, pageCount: popularProducts.data.meta.last_page, currentPage: popularProducts.data.meta.current_page });
+        this.setState({
+            products: popularProducts.data.data,
+            pageCount: popularProducts.data.meta.last_page,
+            currentPage: popularProducts.data.meta.current_page
+        });
     }
 
-     handlePaginationChange = async ({selected}) =>  {
-         const popularProducts = await getPopularProducts({page: selected + 1});
-         const { last_page, current_page } = popularProducts.data.meta;
-         const { data } = popularProducts.data;
-         this.setState({ products: data, pageCount: last_page, currentPage: current_page });
+    handlePaginationChange = async ({ selected }) => {
+        const popularProducts = await getPopularProducts({ page: selected + 1 });
+        const { last_page, current_page } = popularProducts.data.meta;
+        const { data } = popularProducts.data;
+        this.setState({ products: data, pageCount: last_page, currentPage: current_page });
     };
 
     render() {
         const paginationProps = {
-            'subContainerClassName':'pages pagination',
-            'containerClassName': 'pagination',
-            'marginPagesDisplayed': 2,
-            'pageRangeDisplayed': 5,
-            'activeClassName': 'active',
-            'previousLabel': 'previous',
-            'nextLabel':'next',
-            'breakLabel': '...',
-            'breakClassName': 'break-me'
+            subContainerClassName: 'pages pagination',
+            containerClassName: 'pagination',
+            marginPagesDisplayed: 2,
+            pageRangeDisplayed: 5,
+            activeClassName: 'active',
+            previousLabel: 'previous',
+            nextLabel: 'next',
+            breakLabel: '...',
+            breakClassName: 'break-me'
         };
         return (
             <main className="popular-items">
@@ -46,7 +49,7 @@ class PopularItems extends Component {
                         );
                     })}
                 </div>
-                <div className='react-paginate'>
+                <div className="react-paginate">
                     <ReactPaginate
                         previousLabel={paginationProps.previousLabel}
                         nextLabel={paginationProps.nextLabel}
