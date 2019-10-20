@@ -13,9 +13,6 @@ class CategoryProducts extends Component {
     };
 
     async componentWillReceiveProps(nextProps) {
-        /*const { url } = nextProps.match;
-        const productsList = await getProductsByCategory(url);
-        this.setState(() => ({ data: productsList.data.data }));*/
         const { url } = nextProps.match;
         const productsList = await getProductsByCategory(url);
         const { last_page, current_page } = productsList.data.meta;
