@@ -9,6 +9,11 @@ import CategoryProductPage from './pages/categoryproductspage/categoryproductspa
 import Header from './components/header/header.component';
 import AsideBar from './components/asideBar/asideBar.component';
 import ProductPage from './pages/productpage/productpage.component';
+<<<<<<< HEAD
+=======
+import CategoryProductPage from './pages/categoryproductspage/categoryproductspage.component';
+import SearchProductsPage from "./pages/searchproductspage/searchProductspage.component";
+>>>>>>> feat: added search pages
 // Styles
 import './App.css';
 
@@ -30,6 +35,7 @@ function App() {
                 <Header />
                 <AsideBar />
                 <Switch>
+<<<<<<< HEAD
                     <Route exact path="/categories/:id/products/" render={(props) => <CategoryProductPage {...props} paginationProps={paginationProps} />} />
                     <Route exact path="/products/:product_id" component={ProductPage} />
                     {/* Route will be implemented in next versions */
@@ -38,6 +44,7 @@ function App() {
 
                     <Route exect path="/" render={(props) => <HomePage {...props} paginationProps={paginationProps} />} />
                         {/*component={} />*/}
+
                 </Switch>
             </Router>
         </div>
