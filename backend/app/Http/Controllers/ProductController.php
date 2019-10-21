@@ -22,4 +22,8 @@ class ProductController extends Controller
     public function popularItems() {
         return ProductsResource::collection(Product::with('orders')->paginate(env('PAGINATION_LIMIT')));
     }
+
+    public function searchProducts (string $name) {
+        return ProductsResource::collection(Product::where('name', $name )->paginate(env('PAGINATION_LIMIT')));
+    }
 }

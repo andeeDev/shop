@@ -18,7 +18,7 @@ class CategoryProducts extends Component {
         const {
             data,
             meta: { last_page, current_page }
-        } = productsList.data.meta;
+        } = productsList.data;
         this.setState({ data, pageCount: last_page, currentPage: current_page });
     }
 
@@ -38,7 +38,7 @@ class CategoryProducts extends Component {
         const {
             data,
             meta: { last_page, current_page }
-        } = productsList.data.meta;
+        } = productsList.data;
         this.setState({ data, pageCount: last_page, currentPage: current_page });
     };
 
