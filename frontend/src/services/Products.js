@@ -9,7 +9,7 @@ const getProduct = route => {
 };
 
 const getPopularProducts = data => {
-    return send( '/products/popular', 'get', data);
+    return send('/products/popular', 'get', data);
 };
 
 export { getProductsByCategory, getProduct, getPopularProducts };

@@ -15,26 +15,31 @@ class CategoryProducts extends Component {
     async componentWillReceiveProps(nextProps) {
         const { url } = nextProps.match;
         const productsList = await getProductsByCategory(url);
-        const { last_page, current_page } = productsList.data.meta;
-        const { data } = productsList.data;
-        console.log('current_page = ', current_page);
-        this.setState({ data: data, pageCount: last_page, currentPage: current_page });
+        const {
+            data,
+            meta: { last_page, current_page }
+        } = productsList.data.meta;
+        this.setState({ data, pageCount: last_page, currentPage: current_page });
     }
 
     async componentDidMount() {
         const { url } = this.props.match;
         const productsList = await getProductsByCategory(url);
-        const { last_page, current_page } = productsList.data.meta;
-        const { data } = productsList.data;
-        this.setState({ data: data, pageCount: last_page, currentPage: current_page });
+        const {
+            data,
+            meta: { last_page, current_page }
+        } = productsList.data;
+        this.setState({ data, pageCount: last_page, currentPage: current_page });
     }
 
     handlePaginationChange = async ({ selected }) => {
         const { url } = this.props.match;
         const productsList = await getProductsByCategory(url, { page: selected + 1 });
-        const { last_page, current_page } = productsList.data.meta;
-        const { data } = productsList.data;
-        this.setState({ data: data, pageCount: last_page, currentPage: current_page });
+        const {
+            data,
+            meta: { last_page, current_page }
+        } = productsList.data.meta;
+        this.setState({ data, pageCount: last_page, currentPage: current_page });
     };
 
     render() {
@@ -62,19 +67,11 @@ class CategoryProducts extends Component {
                 </div>
                 <div className="react-paginate">
                     <ReactPaginate
-                        previousLabel={paginationProps.previousLabel}
-                        nextLabel={paginationProps.nextLabel}
-                        breakLabel={paginationProps.breakLabel}
-                        breakClassName={paginationProps.breakClassName}
+                        {...paginationProps}
                         initialPage={this.state.currentPage - 1}
                         forcePage={this.state.currentPage - 1}
                         pageCount={this.state.pageCount}
-                        marginPagesDisplayed={paginationProps.marginPagesDisplayed}
-                        pageRangeDisplayed={paginationProps.pageRangeDisplayed}
                         onPageChange={this.handlePaginationChange}
-                        containerClassName={paginationProps.containerClassName}
-                        subContainerClassName={paginationProps.subContainerClassName}
-                        activeClassName={paginationProps.activeClassName}
                     />
                 </div>
             </main>

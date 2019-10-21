@@ -13,17 +13,23 @@ class PopularItems extends Component {
 
     async componentDidMount() {
         const popularProducts = await getPopularProducts();
+        const {
+            data,
+            meta: { last_page, current_page }
+        } = popularProducts.data;
         this.setState({
-            products: popularProducts.data.data,
-            pageCount: popularProducts.data.meta.last_page,
-            currentPage: popularProducts.data.meta.current_page
+            products: data,
+            pageCount: last_page,
+            currentPage: current_page
         });
     }
 
     handlePaginationChange = async ({ selected }) => {
         const popularProducts = await getPopularProducts({ page: selected + 1 });
-        const { last_page, current_page } = popularProducts.data.meta;
-        const { data } = popularProducts.data;
+        const {
+            data,
+            meta: { last_page, current_page }
+        } = popularProducts.data.meta;
         this.setState({ products: data, pageCount: last_page, currentPage: current_page });
     };
 
@@ -51,17 +57,9 @@ class PopularItems extends Component {
                 </div>
                 <div className="react-paginate">
                     <ReactPaginate
-                        previousLabel={paginationProps.previousLabel}
-                        nextLabel={paginationProps.nextLabel}
-                        breakLabel={paginationProps.breakLabel}
-                        breakClassName={paginationProps.breakClassName}
+                        {...paginationProps}
                         pageCount={this.state.pageCount}
-                        marginPagesDisplayed={paginationProps.marginPagesDisplayed}
-                        pageRangeDisplayed={paginationProps.pageRangeDisplayed}
                         onPageChange={this.handlePaginationChange}
-                        containerClassName={paginationProps.containerClassName}
-                        subContainerClassName={paginationProps.subContainerClassName}
-                        activeClassName={paginationProps.activeClassName}
                     />
                 </div>
             </main>
