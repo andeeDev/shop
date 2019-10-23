@@ -13,17 +13,18 @@ class ProductController extends Controller
         return ProductsResource::collection(Product::where('ctg_id', $category_id)->paginate(env('PAGINATION_LIMIT')));
     }
 
-    public function specialProduct(string $product_id) {
+    public function specialProduct(string $product_id) {//item
         return ProductsResource::collection(Product::where('id', $product_id)->get());
     }
     /*
      * Return  all items now
      * */
-    public function popularItems() {
+    public function popularItems() {//popular
         return ProductsResource::collection(Product::with('orders')->paginate(env('PAGINATION_LIMIT')));
     }
 
-    public function searchProducts (string $name) {
+    public function searchProducts (string $name) {//search
         return ProductsResource::collection(Product::where('name', $name )->paginate(env('PAGINATION_LIMIT')));
     }
 }
+

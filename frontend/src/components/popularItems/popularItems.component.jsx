@@ -3,53 +3,16 @@ import ReactPaginate from 'react-paginate';
 import { getPopularProducts } from '../../services/Products';
 import ProductCard from '../productCard/productCard.component';
 import './popularItems.styles.scss';
+import PropTypes from 'prop-types';
 
-class PopularItems extends Component {
-    state = {
-        products: [],
-        pageCount: 1,
-        currentPage: 1
-    };
 
-    async componentDidMount() {
-        const popularProducts = await getPopularProducts();
-        const {
-            data,
-            meta: { last_page, current_page }
-        } = popularProducts.data;
-        this.setState({
-            products: data,
-            pageCount: last_page,
-            currentPage: current_page
-        });
-    }
 
-    handlePaginationChange = async ({ selected }) => {
-        const popularProducts = await getPopularProducts({ page: selected + 1 });
-        const {
-            data,
-            meta: { last_page, current_page }
-        } = popularProducts.data.meta;
-        this.setState({ products: data, pageCount: last_page, currentPage: current_page });
-    };
-
-    render() {
-        const paginationProps = {
-            subContainerClassName: 'pages pagination',
-            containerClassName: 'pagination',
-            marginPagesDisplayed: 2,
-            pageRangeDisplayed: 5,
-            activeClassName: 'active',
-            previousLabel: 'previous',
-            nextLabel: 'next',
-            breakLabel: '...',
-            breakClassName: 'break-me'
-        };
+const PopularItems = (props) => {
         return (
             <main className="popular-items">
                 <h1 className="section-title">Popular items</h1>
                 <div className="ContentPart__Container">
-                    {this.state.products.map(product => {
+                    {props.products.map(product => {
                         return (
                             <ProductCard key={product.id} title={product.name} id={product.id} price={product.price} />
                         );
@@ -57,14 +20,26 @@ class PopularItems extends Component {
                 </div>
                 <div className="react-paginate">
                     <ReactPaginate
-                        {...paginationProps}
-                        pageCount={this.state.pageCount}
-                        onPageChange={this.handlePaginationChange}
+                        {...props.paginationProps}
+                        pageCount={props.pageCount}
+                        currentPage={props.currentPage}
+                        onPageChange={props.handle}
+
                     />
                 </div>
             </main>
         );
-    }
 }
+
+PopularItems.propTypes = {
+    products: PropTypes.array.isRequired,
+    paginationProps: PropTypes.object.isRequired,
+    pageCount: PropTypes.number.isRequired,
+    handle: PropTypes.func.isRequired
+};
+
+PopularItems.defaultProps = {
+    products: []
+};
 
 export default PopularItems;

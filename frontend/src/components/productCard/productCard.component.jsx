@@ -24,8 +24,7 @@ class ProductCard extends Component {
                     <h2 className="ProductCard__title">{title}</h2>
                 </Link>
                 <Button variant="contained" color="primary">
-                    {' '}
-                    Buy{' '}
+                    Buy
                 </Button>
                 <span>{`${price} $`}</span>
             </section>

@@ -4,10 +4,12 @@ import './categoryproductspage.styles.scss';
 
 import CategoryProducts from '../../components/categoryProducts/CategoryProducts.component';
 
-const CategoryProductPage = () => {
+const CategoryProductPage = props => {
+    const { id } = props.match.params;
+    console.log(id);
     return (
         <div className="category-product-page">
-            <CategoryProducts />
+            <CategoryProducts id={id}/>
         </div>
     );
 };

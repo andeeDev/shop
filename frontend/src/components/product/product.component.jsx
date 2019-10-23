@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter,  Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 import { getProduct } from '../../services/Products';
@@ -12,13 +12,21 @@ class Product extends Component {
     };
 
     async componentDidMount() {
-        const { url } = this.props.match;
-        const productData = await getProduct(url);
-        this.setState({ product: productData.data.data[0] });
+        const { product_id } = this.props.match.params;
+        const productData = await getProduct(product_id);
+        const [ product] = productData.data.data;
+        this.setState({ product });
     }
 
+
     render() {
+        if (!this.state.product){
+            return <Redirect to={{
+                pathname: '/'
+            }} />;
+        }
         const { id, name, desc, price } = this.state.product;
+
         return (
             <div className="product-container">
                 <div className="image-container">

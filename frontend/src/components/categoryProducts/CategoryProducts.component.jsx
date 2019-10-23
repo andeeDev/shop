@@ -6,6 +6,7 @@ import ProductCard from '../productCard/productCard.component';
 import ReactPaginate from 'react-paginate';
 
 class CategoryProducts extends Component {
+
     state = {
         data: [],
         pageCount: 1,

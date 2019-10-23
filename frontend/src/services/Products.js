@@ -4,8 +4,8 @@ const getProductsByCategory = (route, data) => {
     return send(route, 'get', data);
 };
 
-const getProduct = route => {
-    return send(route);
+const getProduct = product_id => {
+    return send(`/products/${product_id}`);
 };
 
 const getPopularProducts = data => {
