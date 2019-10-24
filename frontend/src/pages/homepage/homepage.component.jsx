@@ -4,14 +4,10 @@ import { getPopularProducts } from '../../services/Products';
 import ProductList from '../../components/ProductsList/ProductList.component';
 
 class HomePage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     state = {
         products: [],
         pageCount: 1,
-        currentPage: 1
+        currentPage: 0
     };
 
     async componentDidMount() {
@@ -23,7 +19,7 @@ class HomePage extends Component {
         this.setState({
             products: data,
             pageCount: last_page,
-            currentPage: current_page
+            currentPage: current_page - 1
         });
     }
 
@@ -57,14 +53,11 @@ class HomePage extends Component {
 
     handlepagination = async ({ selected }) => {
         const popularProducts = await getPopularProducts({ page: selected + 1 });
-
         const {
             data,
             meta: { last_page, current_page }
         } = popularProducts.data;
-        console.log('popularProducts', last_page);
-
-        this.setState({ products: data, pageCount: last_page, currentPage: current_page });
+        this.setState({ products: data, pageCount: last_page, currentPage: current_page - 1 });
     };
 }
 

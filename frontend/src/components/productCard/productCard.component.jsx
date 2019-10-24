@@ -8,7 +8,6 @@ class ProductCard extends Component {
         buyIsClicked: false
     };
 
-
     render() {
         const { id, title, price } = this.props;
 

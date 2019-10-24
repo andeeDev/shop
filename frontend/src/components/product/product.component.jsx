@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { withRouter,  Redirect } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-
 import { getProduct } from '../../services/Products';
-
 import './product.styes.scss';
 
 class Product extends Component {
@@ -13,20 +11,15 @@ class Product extends Component {
 
     async componentDidMount() {
         const { product_id } = this.props.match.params;
-        const productData = await getProduct(product_id);
-        const [ product] = productData.data.data;
+        const productList = await getProduct(product_id);
+        const product = productList.data.data;
         this.setState({ product });
     }
 
-
     render() {
-        if (!this.state.product){
-            return <Redirect to={{
-                pathname: '/'
-            }} />;
-        }
-        const { id, name, desc, price } = this.state.product;
-
+        const {
+            product: { id, name, desc, price }
+        } = this.state;
         return (
             <div className="product-container">
                 <div className="image-container">

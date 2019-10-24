@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CategoriesResource;
 use App\Http\Resources\ProductsResource;
 use App\Product;
-use Illuminate\Http\Request;
+
+
 
 class ProductController extends Controller
 {
-    public function index(string $category_id) {
+    public function index(int $category_id) {
         return ProductsResource::collection(Product::where('ctg_id', $category_id)->paginate(env('PAGINATION_LIMIT')));
     }
 
-    public function specialProduct(string $product_id) {//item
-        return ProductsResource::collection(Product::where('id', $product_id)->get());
+    public function item(string $product_id) {
+        return new ProductsResource(Product::findOrFail($product_id));
     }
     /*
      * Return  all items now
