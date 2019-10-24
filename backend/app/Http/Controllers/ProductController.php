@@ -24,7 +24,7 @@ class ProductController extends Controller
     }
 
     public function searchProducts (string $name) {//search
-        return ProductsResource::collection(Product::where('name', '=', $name )->paginate(env('PAGINATION_LIMIT')));
+        return ProductsResource::collection(Product::where('name', 'like', $name )->paginate(env('PAGINATION_LIMIT')));
     }
 }
 
