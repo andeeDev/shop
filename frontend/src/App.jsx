@@ -37,7 +37,7 @@ function App() {
                     {/* Route will be implemented in next versions */
                     /* <Route exact path="/cart" component={HomePage}/>*/}
                     <Route exec path="/404" component={ErrorPage404} />
-                    <Route exact path="/searchProducts" component={SearchProductsPage} />
+                    <Route exact path="/searchProducts" render={(props) => <SearchProductsPage {...props} paginationProps={paginationProps} />} />
 
                     <Route exect path="/" render={(props) => <HomePage {...props} paginationProps={paginationProps} />} />
 

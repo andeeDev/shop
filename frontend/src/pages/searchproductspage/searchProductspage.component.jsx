@@ -65,19 +65,9 @@ class SearchProductsPage extends Component {
     };
 
     render() {
-        const paginationProps = {
-            subContainerClassName: 'pages pagination',
-            containerClassName: 'pagination',
-            marginPagesDisplayed: 2,
-            pageRangeDisplayed: 5,
-            activeClassName: 'active',
-            previousLabel: 'previous',
-            nextLabel: 'next',
-            breakLabel: '...',
-            breakClassName: 'break-me'
-        };
+
         const { products, pageCount, currentPage } = this.state;
-        console.log('this.state.products');
+        const { paginationProps } = this.props;
         return (
             <div className="SearchProductsPage">
                 <main className="popular-items">
