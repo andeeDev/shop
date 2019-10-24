@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-
 import { getProduct } from '../../services/Products';
-
 import './product.styes.scss';
 
 class Product extends Component {
@@ -12,13 +10,16 @@ class Product extends Component {
     };
 
     async componentDidMount() {
-        const { url } = this.props.match;
-        const productData = await getProduct(url);
-        this.setState({ product: productData.data.data[0] });
+        const { product_id } = this.props.match.params;
+        const productList = await getProduct(product_id);
+        const product = productList.data.data;
+        this.setState({ product });
     }
 
     render() {
-        const { id, name, desc, price } = this.state.product;
+        const {
+            product: { id, name, desc, price }
+        } = this.state;
         return (
             <div className="product-container">
                 <div className="image-container">

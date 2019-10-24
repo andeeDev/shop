@@ -19,8 +19,9 @@ Route::get('products/popular','ProductController@popularItems');
 
 Route::get('/categories','CategoryController@index');
 
-Route::get('/products/{product_id}', 'ProductController@specialProduct');
+Route::get('/products/{product_id}', 'ProductController@item');
 
+//Route::get('/products/{product_id}', 'ProductController@searchProducts');
 /*
  * This route will be used for loading static files from server asynchronously
  *
