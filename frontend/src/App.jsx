@@ -13,19 +13,31 @@ import ProductPage from './pages/productpage/productpage.component';
 import './App.css';
 
 function App() {
+    const paginationProps = {
+        subContainerClassName: 'pages pagination',
+        containerClassName: 'pagination',
+        marginPagesDisplayed: 2,
+        pageRangeDisplayed: 5,
+        activeClassName: 'active',
+        previousLabel: 'previous',
+        nextLabel: 'next',
+        breakLabel: '...',
+        breakClassName: 'break-me'
+    };
     return (
         <div className="App">
             <Router>
                 <Header />
                 <AsideBar />
                 <Switch>
-                    <Route exact path="/categories/:id/products/" component={CategoryProductPage} />
+                    <Route exact path="/categories/:id/products/" render={(props) => <CategoryProductPage {...props} paginationProps={paginationProps} />} />
                     <Route exact path="/products/:product_id" component={ProductPage} />
                     {/* Route will be implemented in next versions */
                     /* <Route exact path="/cart" component={HomePage}/>*/}
                     <Route exec path="/404" component={ErrorPage404} />
 
-                    <Route exect path="/" component={HomePage} />
+                    <Route exect path="/" render={(props) => <HomePage {...props} paginationProps={paginationProps} />} />
+                        {/*component={} />*/}
                 </Switch>
             </Router>
         </div>

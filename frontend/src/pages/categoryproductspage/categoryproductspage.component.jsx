@@ -26,7 +26,7 @@ class CategoryProductPage extends Component {
             const popularProducts = await getProductsByCategory(id);
             const {
                 data,
-                meta: { last_page, current_page }
+                meta: { last_page}
             } = popularProducts.data;
             this.setState({
                 products: data,
@@ -54,31 +54,6 @@ class CategoryProductPage extends Component {
         });
     }
 
-    render() {
-        const paginationProps = {
-            subContainerClassName: 'pages pagination',
-            containerClassName: 'pagination',
-            marginPagesDisplayed: 2,
-            pageRangeDisplayed: 5,
-            activeClassName: 'active',
-            previousLabel: 'previous',
-            nextLabel: 'next',
-            breakLabel: '...',
-            breakClassName: 'break-me'
-        };
-        return (
-            <div className="category-product-page">
-                <ProductList
-                    paginationProps={paginationProps}
-                    products={this.state.products}
-                    pageCount={this.state.pageCount}
-                    currentPage={this.state.currentPage}
-                    handle={this.handlePaginationChange}
-                />
-            </div>
-        );
-    }
-
     handlePaginationChange = async ({ selected }) => {
         const {
             match: {
@@ -93,6 +68,22 @@ class CategoryProductPage extends Component {
 
         this.setState({ products: data, pageCount: last_page, currentPage: current_page - 1 });
     };
+
+    render() {
+        const { paginationProps } = this.props;
+        const { products, pageCount, currentPage } = this.state;
+        return (
+            <div className="category-product-page">
+                <ProductList
+                    paginationProps={paginationProps}
+                    products={products}
+                    pageCount={pageCount}
+                    currentPage={currentPage}
+                    handle={this.handlePaginationChange}
+                />
+            </div>
+        );
+    }
 }
 
 export default CategoryProductPage;

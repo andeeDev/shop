@@ -24,26 +24,17 @@ class HomePage extends Component {
     }
 
     render() {
-        const paginationProps = {
-            subContainerClassName: 'pages pagination',
-            containerClassName: 'pagination',
-            marginPagesDisplayed: 2,
-            pageRangeDisplayed: 5,
-            activeClassName: 'active',
-            previousLabel: 'previous',
-            nextLabel: 'next',
-            breakLabel: '...',
-            breakClassName: 'break-me'
-        };
+        const { products, pageCount, currentPage } = this.state;
+        const {paginationProps} = this.props;
         return (
             <div className="home-page">
                 <main className="popular-items">
                     <h1 className="section-title">Popular items</h1>
                     <ProductList
                         paginationProps={paginationProps}
-                        products={this.state.products}
-                        pageCount={this.state.pageCount}
-                        currentPage={this.state.currentPage}
+                        products={products}
+                        pageCount={pageCount}
+                        currentPage={currentPage}
                         handle={this.handlepagination}
                     />
                 </main>
