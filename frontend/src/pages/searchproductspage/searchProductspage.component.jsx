@@ -36,11 +36,13 @@ class SearchProductsPage extends Component {
                 state: { searchedString }
             }
         } = this.props;
+
         const searchedProducts = await findProducts({ searchedString: searchedString });
         const {
             data,
             meta: { last_page, current_page }
         } = searchedProducts.data;
+        console.log("data = ",searchedProducts.data);
         this.setState({
             products: data,
             pageCount: last_page,

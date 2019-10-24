@@ -3,17 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Pages
 import HomePage from './pages/homepage/homepage.component';
 import ErrorPage404 from './pages/ErrorPage404/ErrorPage404Page.component.jsx';
-import CategoryProductPage from './pages/categoryproductspage/categoryproductspage.component';
 
 //Components
 import Header from './components/header/header.component';
 import AsideBar from './components/asideBar/asideBar.component';
 import ProductPage from './pages/productpage/productpage.component';
-<<<<<<< HEAD
-=======
 import CategoryProductPage from './pages/categoryproductspage/categoryproductspage.component';
 import SearchProductsPage from "./pages/searchproductspage/searchProductspage.component";
->>>>>>> feat: added search pages
 // Styles
 import './App.css';
 
@@ -35,15 +31,16 @@ function App() {
                 <Header />
                 <AsideBar />
                 <Switch>
-<<<<<<< HEAD
+
                     <Route exact path="/categories/:id/products/" render={(props) => <CategoryProductPage {...props} paginationProps={paginationProps} />} />
                     <Route exact path="/products/:product_id" component={ProductPage} />
                     {/* Route will be implemented in next versions */
                     /* <Route exact path="/cart" component={HomePage}/>*/}
                     <Route exec path="/404" component={ErrorPage404} />
+                    <Route exact path="/searchProducts" component={SearchProductsPage} />
 
                     <Route exect path="/" render={(props) => <HomePage {...props} paginationProps={paginationProps} />} />
-                        {/*component={} />*/}
+
 
                 </Switch>
             </Router>
