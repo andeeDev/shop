@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './productCard.styles.scss';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
 
 class ProductCard extends Component {
     state = {
@@ -22,9 +23,23 @@ class ProductCard extends Component {
                     />
                     <h2 className="ProductCard__title">{title}</h2>
                 </Link>
-                <Button variant="contained" color="primary">
-                    Buy
-                </Button>
+                <CartContext.Consumer>
+                    {({ cart }) => {
+                        if (cart.get(id) === undefined) {
+                            return (
+                                <Button variant="contained" color="primary">
+                                    Buy
+                                </Button>
+                            );
+                        } else {
+                            return (
+                                <Button variant="contained" color="secondary">
+                                    Buy
+                                </Button>
+                            );
+                        }
+                    }}
+                </CartContext.Consumer>
                 <span>{`${price} $`}</span>
             </section>
         );
