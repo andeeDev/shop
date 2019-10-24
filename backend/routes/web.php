@@ -21,7 +21,7 @@ Route::get('/categories','CategoryController@index');
 
 Route::get('/products/{product_id}', 'ProductController@item');
 
-//Route::get('/products/{product_id}', 'ProductController@searchProducts');
+Route::get('/search', 'ProductController@search');
 /*
  * This route will be used for loading static files from server asynchronously
  *
