@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { Link } from 'react-router-dom';
 
 import './header.styles.scss';
+import SearchForm from "../searchForm/searchForm.component";
 
 class Header extends Component {
 
@@ -13,6 +14,7 @@ class Header extends Component {
                 <Link to='/'>
                     <Logo className='logo' />
                 </Link>
+                <SearchForm />
                 <Navigation />
             </header>
         )

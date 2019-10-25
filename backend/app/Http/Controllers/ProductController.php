@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductsResource;
 use App\Product;
-
+use Illuminate\Http\Request;
 
 
 class ProductController extends Controller
@@ -23,8 +23,11 @@ class ProductController extends Controller
         return ProductsResource::collection(Product::with('orders')->paginate(env('PAGINATION_LIMIT')));
     }
 
-    public function searchProducts (string $name) {//search
-        return ProductsResource::collection(Product::where('name', 'like', $name )->paginate(env('PAGINATION_LIMIT')));
+    public function search (Request $request) {
+        return ProductsResource::collection(Product::where('name', 'like','%'.$request->searchedString.'%')->paginate(env('PAGINATION_LIMIT')));
+        //);
+
+        //Product::where('name', searchedString);
     }
 }
 

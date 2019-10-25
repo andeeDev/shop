@@ -11,5 +11,6 @@ const getProduct = product_id => {
 const getPopularProducts = data => {
     return send('/products/popular', 'get', data);
 };
+const findProducts = data => send(`/search`, 'get', data);
 
-export { getProductsByCategory, getProduct, getPopularProducts };
+export { getProductsByCategory, getProduct, getPopularProducts, findProducts };

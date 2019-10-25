@@ -9,7 +9,6 @@ async function send(api, method = 'get', data = {}) {
             params: data
         });
     } catch (error) {
-        console.log("error", error);
         const history = createBrowserHistory();
         history.replace('/404');
         return error;
