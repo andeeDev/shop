@@ -20,9 +20,9 @@ class SearchProducts extends React.Component {
         return (
             <div>
                 <div className="ContentPart__Container">
-                    {products.map(product => (
-                            <ProductCard key={product.id} title={product.name} id={product.id} price={product.price} />
-                        ))}
+                    {
+                        products.map(({ id, name, price }) => <ProductCard key={id} title={name} id={id} price={price} />)
+                    }
                 </div>
                 <div className="react-paginate">
                     <ReactPaginate
