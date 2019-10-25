@@ -16,15 +16,13 @@ class SearchProducts extends React.Component {
         breakClassName: 'break-me'
     };
     render() {
-        const { products,  lastPage, currentPage, handle } = this.props;
+        const { products, lastPage, currentPage, handle } = this.props;
         return (
             <div>
                 <div className="ContentPart__Container">
-                    {products.map(product => {
-                        return (
+                    {products.map(product => (
                             <ProductCard key={product.id} title={product.name} id={product.id} price={product.price} />
-                        );
-                    })}
+                        ))}
                 </div>
                 <div className="react-paginate">
                     <ReactPaginate

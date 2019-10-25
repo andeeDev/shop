@@ -42,7 +42,6 @@ class SearchProductsPage extends Component {
             data,
             meta: { last_page, current_page }
         } = searchedProducts.data;
-        console.log("data = ",searchedProducts.data);
         this.setState({
             products: data,
             pageCount: last_page,
@@ -65,15 +64,13 @@ class SearchProductsPage extends Component {
     };
 
     render() {
-
         const { products, pageCount, currentPage } = this.state;
-        const { paginationProps } = this.props;
+
         return (
             <div className="SearchProductsPage">
                 <main className="popular-items">
                     <h1 className="section-title">Searched products</h1>
                     <SearchProducts
-                        paginationProps={paginationProps}
                         currentPage={currentPage}
                         lastPage={pageCount}
                         products={products}
