@@ -4,8 +4,19 @@ import ProductCard from '../productCard/productCard.component';
 import ReactPaginate from 'react-paginate';
 
 class SearchProducts extends React.Component {
+    paginationProps = {
+        subContainerClassName: 'pages pagination',
+        containerClassName: 'pagination',
+        marginPagesDisplayed: 2,
+        pageRangeDisplayed: 5,
+        activeClassName: 'active',
+        previousLabel: 'previous',
+        nextLabel: 'next',
+        breakLabel: '...',
+        breakClassName: 'break-me'
+    };
     render() {
-        const { products, paginationProps, lastPage, currentPage, handle } = this.props;
+        const { products,  lastPage, currentPage, handle } = this.props;
         return (
             <div>
                 <div className="ContentPart__Container">
@@ -20,7 +31,7 @@ class SearchProducts extends React.Component {
                         pageCount={lastPage}
                         currentPage={currentPage}
                         onPageChange={handle}
-                        {...paginationProps}
+                        {...this.paginationProps}
                     />
                 </div>
             </div>

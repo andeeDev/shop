@@ -4,6 +4,17 @@ import ProductCard from '../productCard/productCard.component';
 import PropTypes from 'prop-types';
 
 const ProductList = props => {
+    const paginationProps = {
+        subContainerClassName: 'pages pagination',
+        containerClassName: 'pagination',
+        marginPagesDisplayed: 2,
+        pageRangeDisplayed: 5,
+        activeClassName: 'active',
+        previousLabel: 'previous',
+        nextLabel: 'next',
+        breakLabel: '...',
+        breakClassName: 'break-me'
+    };
     return (
         <React.Fragment>
             <div className="ContentPart__Container">
@@ -13,7 +24,7 @@ const ProductList = props => {
             </div>
             <div className="react-paginate">
                 <ReactPaginate
-                    {...props.paginationProps}
+                    {...paginationProps}
                     pageCount={props.pageCount}
                     forcePage={props.currentPage}
                     currentPage={props.currentPage}
@@ -26,7 +37,6 @@ const ProductList = props => {
 
 ProductList.propTypes = {
     products: PropTypes.array.isRequired,
-    paginationProps: PropTypes.object.isRequired,
     pageCount: PropTypes.number.isRequired,
     handle: PropTypes.func.isRequired
 };

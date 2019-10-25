@@ -14,17 +14,7 @@ import SearchProductsPage from './pages/searchproductspage/searchProductspage.co
 import './App.css';
 
 class App extends Component {
-    paginationProps = {
-        subContainerClassName: 'pages pagination',
-        containerClassName: 'pagination',
-        marginPagesDisplayed: 2,
-        pageRangeDisplayed: 5,
-        activeClassName: 'active',
-        previousLabel: 'previous',
-        nextLabel: 'next',
-        breakLabel: '...',
-        breakClassName: 'break-me'
-    };
+
     render() {
         return (
             <div className="App">
