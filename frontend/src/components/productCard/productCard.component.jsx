@@ -24,16 +24,16 @@ class ProductCard extends Component {
                     <h2 className="ProductCard__title">{title}</h2>
                 </Link>
                 <CartContext.Consumer>
-                    {({ cart }) => {
-                        if (cart.get(id) === undefined) {
+                    {({ cart, addItem }) => {
+                        if (cart[id] === undefined) {
                             return (
-                                <Button variant="contained" color="primary">
+                                <Button variant="contained" color="primary"  onClick={addItem(id)} >
                                     Buy
                                 </Button>
                             );
                         } else {
                             return (
-                                <Button variant="contained" color="secondary">
+                                <Button variant="contained" color="secondary" onClick={addItem(id)}>
                                     Buy
                                 </Button>
                             );

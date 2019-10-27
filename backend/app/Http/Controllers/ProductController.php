@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductsResource;
 use App\Product;
-
+use Illuminate\Http\Request;
 
 
 class ProductController extends Controller
@@ -19,8 +19,13 @@ class ProductController extends Controller
     /*
      * Return  all items now
      * */
-    public function popularItems() {//popular
+    public function popular() {
         return ProductsResource::collection(Product::with('orders')->paginate(env('PAGINATION_LIMIT')));
+    }
+
+    public function getItems(Request $request) {
+        return ProductsResource::collection(Product::whereIn('id', $request->productsId)->get());
+        // ProductsResource::collection($);
     }
 
     public function searchProducts (string $name) {//search
