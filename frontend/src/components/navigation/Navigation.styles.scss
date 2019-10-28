@@ -1,3 +1,22 @@
+.App-nav {
+  position: relative;
+}
 .register-button {
+
+}
+.register-button {
+  position: relative;
+}
+.hoverable:hover  .block-with-reg-buttons{
+  display: flex;
+}
+.block-with-reg-buttons{
+  padding-top: 40px;
+  display: none;
+  position: absolute;
+  top:35px;
+  padding-left: 100px;
+  right: 5px;
+  flex-direction: column;
 
 }

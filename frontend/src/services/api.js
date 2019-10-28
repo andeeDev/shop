@@ -5,9 +5,19 @@ async function send(api, method = 'get', data = {}) {
     let response;
     try {
         const apiUrl = process.env.REACT_APP_API_URL + api;
-        response = await axios[method](apiUrl, {
-            params: data
-        });
+        if(method  === 'get') {
+            response = await axios[method](apiUrl, {
+                params: data
+            });
+        } else {
+            response = axios.post(apiUrl, data);
+            console.log(response );
+            response.then((data) => {
+                console.log(data);
+            }).catch((data) => {
+                console.log(data);
+            })
+        }
     } catch (error) {
         console.log("error", error);
         const history = createBrowserHistory();
