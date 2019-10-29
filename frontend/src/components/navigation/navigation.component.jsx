@@ -7,23 +7,24 @@ import './Navigation.styles.scss';
 import sendToken from "../../services/Login";
 
 class Navigation extends Component {
+
     responseFacebook =  (response) => {
         const  {accessToken } = response;
         localStorage.setItem('ftoken', accessToken);
         sendToken({token: accessToken, name:response.name});
     };
+
     responseGoogle =  (response) => {
         if((response.hasOwnProperty('error'))){
             console.log("error");
         }else {
             const {accessToken} = response;
             localStorage.setItem('gtoken', accessToken);
-
             const res = sendToken({token: accessToken, name: response.profileObj.name})
-
         }
-
     };
+
+
     render() {
         return (
             <nav className="App-nav">
@@ -39,7 +40,6 @@ class Navigation extends Component {
                 <div className='block-with-reg-buttons'>
                     <FacebookLogin
                         appId="3031270550346971"
-                        autoLoad={true}
                         fields="name,email,picture"
                         callback={this.responseFacebook}
                     />

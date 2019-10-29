@@ -20,7 +20,10 @@ class ProductController extends Controller
      * Return  all items now
      * */
     public function popular() {
-        return ProductsResource::collection(Product::with('orders')->paginate(env('PAGINATION_LIMIT')));
+        return ProductsResource::collection(
+            Product::withCount('orders')->orderBy('orders_count', 'desc')
+
+            ->paginate(env('PAGINATION_LIMIT')));
     }
 
     public function getItems(Request $request) {

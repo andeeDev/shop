@@ -28,10 +28,10 @@ class CartPage extends Component {
         if(Object.keys(cart).length !== 0){
             const productsList = await getProducts({ productsId: Array.from(Object.keys(cart)) });
             const {data}  = productsList.data;
-            this.setState({productsInCart: data, cart: cart});
+            this.setState({productsInCart: data, cart: cart, token: this.props.token});
         }
         else {
-            this.setState({productsInCart:[], cart: []});
+            this.setState({productsInCart:[], cart: [], token: this.props.token});
         }
 
     }
@@ -61,7 +61,11 @@ class CartPage extends Component {
 
 
     render() {
-
+        console.log({
+            cart: this.props.cart,
+            address: this.state.address,
+            token: this.state.token
+        });
         const { productsInCart } = this.state;
         if(Object.keys(this.state.cart).length > 0) {
         return (
